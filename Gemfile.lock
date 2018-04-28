@@ -55,6 +55,8 @@ GEM
       devise (>= 4.4)
     erubi (1.7.1)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -168,6 +170,7 @@ DEPENDENCIES
   byebug
   devise
   devise-i18n
+  faker
   jquery-rails
   listen
   pg
