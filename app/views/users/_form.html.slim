@@ -1,9 +1,15 @@
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      ul
-        - @user.errors.full_messages.each do |message|
-          li = message
+= form_for @user, html: { mutipart: true } do |f|
+  = render partial: 'partials/form_errors', locals: {model: @user}
 
-  .actions = f.submit
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :email
+    = f.text_field :email, class: 'form-control'
+
+  .actions
+    = f.submit 'Сохранить', class: 'btn btn-primary'
+    = ' или '
+    = link_to 'вернуться', :back

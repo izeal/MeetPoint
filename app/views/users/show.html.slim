@@ -1,6 +1,4 @@
-p#notice = notice
-
-
-=> link_to 'Edit', edit_user_path(@user)
-'|
-=< link_to 'Back', users_path
+.text-center
+  h1 = @user.name
+  p.buffer-top
+    = link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-default'
