@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :config_params_for_create, if: :devise_controller?
   before_action :config_params_for_edit, if: :devise_controller?
 
+  helper_method :current_user_can_edit?
+
   def config_params_for_edit
     devise_parameter_sanitizer.permit(
       :account_update,
@@ -13,5 +15,9 @@ class ApplicationController < ActionController::Base
 
   def config_params_for_create
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :password])
+  end
+
+  def current_user_can_edit?(event)
+    event.user == current_user && current_user
   end
 end
