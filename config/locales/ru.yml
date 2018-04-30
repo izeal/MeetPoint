@@ -48,3 +48,7 @@ ru:
       events: 'События'
       edit: 'Редактировать событие'
 
+  will_paginate:
+    previous_label: "Назад"
+    next_label: "Вперед"
+    page_gap: "…"
