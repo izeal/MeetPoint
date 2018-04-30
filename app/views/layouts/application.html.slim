@@ -14,8 +14,7 @@ html lang="ru"
 
     .container
       .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
+        = bootstrap_flash
+        = yield
 
       = render partial: 'layouts/footer'

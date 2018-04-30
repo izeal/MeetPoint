@@ -3,7 +3,7 @@
   = image_tag user_avatar(@user)
   - if @user == current_user
     p.buffer-top
-      = link_to "Редактировать профиль", edit_user_path(@user), class: 'btn btn-default'
+      = link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default'
 
   .row
     .col-md-12

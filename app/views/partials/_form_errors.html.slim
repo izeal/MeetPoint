@@ -1,9 +1,0 @@
-- errors = model.errors
-
-- if errors.any?
-  .alert.alert-danger
-    .lead.buffer-buttom
-      = "В вашей форме #{errors.count} ошибок"
-    ul
-      - errors.full_messages.each do |message|
-        li = message
