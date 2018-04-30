@@ -1,6 +1,6 @@
 module ApplicationHelper
   def user_avatar(user)
-    asset_path('avatar.jpeg')
+    asset_path('avatar.jpg')
   end
 
   def errors_viewer(resource)
