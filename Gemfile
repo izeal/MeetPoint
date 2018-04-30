@@ -21,6 +21,7 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 
 gem 'faker'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug'
