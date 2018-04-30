@@ -1,3 +1,3 @@
-- if errors_viewer(resource)
+- if model.errors.any?
   .alert.alert-danger#danger-alert
-    = errors_viewer(resource)
+    = errors_viewer(model)

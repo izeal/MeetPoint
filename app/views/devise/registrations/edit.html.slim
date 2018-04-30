@@ -6,7 +6,8 @@
 
       .panel-body
         = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-          = devise_error_messages!
+
+          = render partial: 'partials/errors_viewer', locals: {model: @user}
 
           fieldset.form-group
             = f.label :email
@@ -31,5 +32,5 @@
           .actions
             = f.submit "Сохранить", class: 'btn btn-primary'
             = ' или '
-            = link_to "вернуться", :back
+            = link_to "вернуться", edit_user_path(@user)
 

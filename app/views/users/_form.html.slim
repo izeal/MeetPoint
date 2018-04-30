@@ -1,5 +1,5 @@
 = form_for @user, html: { mutipart: true } do |f|
-  = render partial: 'partials/form_errors', locals: {model: @user}
+  = render partial: 'partials/errors_viewer', locals: {model: @user}
 
   .form-group
     = f.label :name
@@ -12,4 +12,4 @@
   .actions
     = f.submit 'Сохранить', class: 'btn btn-primary'
     = ' или '
-    = link_to 'вернуться', :back
+    = link_to 'вернуться', user_path
