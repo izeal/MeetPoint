@@ -3,13 +3,13 @@
   = image_tag user_avatar(@user)
   - if @user == current_user
     p.buffer-top
-      = link_to 'Создать событие', new_event_path, class: 'btn btn-success'
+      = link_to I18n.t('views.create_event'), new_event_path, class: 'btn btn-success'
 
   .row
     .col-md-12
       - if @user.events.any?
-        h3 Организовал:
+        h3 = I18n.t('views.organized')
         .row
           = render partial: 'events/event', collection: @user.events
       - else
-        p.buffer-top Пользователь пока не организовал ни одного события
+        p.buffer-top = I18n.t('views.organized_nothing')

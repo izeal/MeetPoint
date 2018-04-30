@@ -1,12 +1,12 @@
-h1 События
+h1 = I18n.t('views.events.events')
 
 .buffer-both
-  = link_to 'Создать событие', new_event_path, class: 'btn btn-success'
+  = link_to I18n.t('views.create_event'), new_event_path, class: 'btn btn-success'
 
-  / p = will_paginate
+  p = will_paginate
 
 .row.buffer-bottom
   = render partial: 'events/event', collection: @events.desc
 
 .buffer-both
-  / = will_paginate
+  = will_paginate

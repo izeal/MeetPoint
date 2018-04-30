@@ -1,11 +1,11 @@
-h1 Редактирование профиля
+h1 = I18n.t('views.settings')
 
 .row
   .col-md-6.buffer-top
     = render 'form'
 
     p.buffer-top
-      = button_to "Сменить пароль", edit_user_registration_path, method: :get,class: 'btn btn-primary'
+      = button_to I18n.t('views.change_password'), edit_user_registration_path, method: :get,class: 'btn btn-primary'
 
     p.buffer-top
-      = button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'
+      = button_to I18n.t('views.delete_account'), registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'

@@ -1,5 +1,8 @@
 ru:
-  activarecord:
+  activerecord:
+    models:
+      user: 'Пользователь'
+      event: 'Событие'
     attributes:
       user:
         email: 'Email'
@@ -11,3 +14,37 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+
+  controllers:
+    events:
+      created: 'Вы создали новое мероприятие'
+      updated: 'Вы обновили мероприятие'
+      destroyed: 'Вы удалили мероприятие :('
+    users:
+      updated: 'Вы обновили свой профиль'
+
+  views:
+    password_min_length: 'символов минимум'
+    sign_in: 'Зарегистрироваться'
+    log_in: 'Войти'
+    log_out: 'Выйти'
+    profile: 'Профиль'
+    settings: 'Настройки'
+    forgot_password: 'Забыли пароль?'
+    create_event: 'Создать событие'
+    organized: 'Организовал:'
+    organized_nothing: 'Пользователь пока не организовал ни одного события'
+    change_password: 'Сменить пароль'
+    delete_account: 'Удалить профль'
+    save: 'Сохранить'
+    or: ' или '
+    back: 'вернуться'
+    new_password: 'новый пароль'
+    current_password: 'текущий пароль'
+
+    events:
+      delete: 'Удалить'
+      change: 'Изменить'
+      events: 'События'
+      edit: 'Редактировать событие'
+

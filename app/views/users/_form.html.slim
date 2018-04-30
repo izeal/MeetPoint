@@ -10,6 +10,6 @@
     = f.text_field :email, autofocus: true, class: 'form-control', placeholder: :email
 
   .actions
-    = f.submit 'Сохранить', class: 'btn btn-primary'
-    = ' или '
-    = link_to 'вернуться', user_path
+    = f.submit I18n.t('views.save'), class: 'btn btn-primary'
+    = I18n.t('views.or')
+    = link_to I18n.t('views.back'), user_path
