@@ -4,6 +4,7 @@
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           li = link_to 'Профиль', current_user
+          li = link_to "Настройки", edit_user_path(current_user)
           li = link_to 'Выйти', destroy_user_session_path, method: :delete
         - else
           li = link_to 'Войти', new_user_session_path

@@ -1,5 +1,5 @@
 = form_for @event do |f|
-  = render partial: 'partials/errors_viewer', locals: { resource: @event }
+  = render partial: 'partials/errors_viewer', locals: { model: @event }
 
   .form-group
     = f.label :title

@@ -36,8 +36,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    user = @event.user
     @event.destroy
-    redirect_to events_path, notice: 'Event was successfully destroyed.'
+    redirect_to user_path(user), notice: 'Event was successfully destroyed.'
   end
 
   private
