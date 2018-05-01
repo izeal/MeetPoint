@@ -20,4 +20,9 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def full_title(title = '')
+    base_title = 'MeetPoint'
+    title == '' ? base_title : "#{title} | #{base_title}"
+  end
 end
