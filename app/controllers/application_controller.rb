@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :password])
   end
 
-  def current_user_can_edit?(event)
-    event.user == current_user && current_user
+  def current_user_can_edit?(model)
+    user_signed_in? && (
+      model.user == current_user || (
+        model.try(:event) && model.event.user == current_user
+      )
+    )
   end
 end

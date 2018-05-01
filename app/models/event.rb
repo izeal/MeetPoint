@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :comments
+  has_many :subscriptions
+  has_many :subcribers, through: :subscriptions, source: :user
 
   scope :desc, ->{
     order("events.datetime ASC")

@@ -26,7 +26,10 @@ ru:
       created: 'Ваш комментарий добавлен'
       destroyed: 'Комментарий удален'
       error: 'Ошибка с комментарием'
-
+    subscription:
+      created: 'Вы подписаны на это событие'
+      destroyed: 'Участник отписан'
+      error: 'Подписка/отписка не сработала'
   views:
     password_min_length: 'символов минимум'
     sign_in: 'Зарегистрироваться'
@@ -61,3 +64,6 @@ ru:
     comment:
       destroy_confirm: 'Вы уверны что хотите удалить этот комментарий?'
 
+  subscriptions:
+    subscription:
+      destroy_confirm: 'Вы уверы что хотите удалить эту подписку?'
