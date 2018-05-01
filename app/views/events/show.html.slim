@@ -19,3 +19,8 @@
                 = ' '
                 = link_to I18n.t('views.events.delete'), @event, method: :delete, class: 'btn'
 
+  .row
+    .col-md-8
+      .event-comments.buffer-top
+        .buffer-both
+          = render partial: 'comments/comment', collection: @event.comments

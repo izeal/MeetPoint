@@ -22,6 +22,10 @@ ru:
       destroyed: 'Вы удалили мероприятие :('
     users:
       updated: 'Вы обновили свой профиль'
+    comments:
+      created: 'Ваш комментарий добавлен'
+      destroyed: 'Комментарий удален'
+      error: 'Ошибка с комментарием'
 
   views:
     password_min_length: 'символов минимум'
@@ -52,3 +56,8 @@ ru:
     previous_label: "Назад"
     next_label: "Вперед"
     page_gap: "…"
+
+  comments:
+    comment:
+      destroy_confirm: 'Вы уверны что хотите удалить этот комментарий?'
+

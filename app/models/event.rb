@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   scope :desc, ->{
     order("events.datetime ASC")

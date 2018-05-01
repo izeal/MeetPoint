@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   before_validation { email.downcase! }
   has_many :events, dependent: :destroy
+  has_many :comments
 
   validates :name, presence: true, length: { maximum: 35 }
   validates :email,
