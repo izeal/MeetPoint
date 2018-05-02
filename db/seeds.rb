@@ -4,18 +4,10 @@ User.create(
     password: 'foobar',
 )
 
-Faker::Friends.unique.clear
 Faker::UniqueGenerator.clear
 
-46.times do |n|
-  begin
-    name = Faker::Friends.unique.character.gsub(" ", "_")
-  rescue Faker::UniqueGenerator::RetryLimitExceeded
-    Faker::Friends.unique.clear
-    Faker::UniqueGenerator.clear
-    name = Faker::Friends.unique.character.gsub(" ", "_")
-  end
-
+12.times do |n|
+  name = Faker::Friends.unique.character.gsub(" ", "_")
   User.create(
     name: name,
     email: "#{name}@bar.baz",
@@ -34,6 +26,15 @@ end
 
 35.times do |n|
   name = Faker::Hobbit.unique.character.gsub(" ", "_")
+  User.create(
+    name: name,
+    email: "#{name}@bar.baz",
+    password: 'foobar'
+  )
+end
+
+30.times do |n|
+  name = Faker::Simpsons.unique.character.gsub(" ", "_")
   User.create(
     name: name,
     email: "#{name}@bar.baz",
