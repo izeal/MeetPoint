@@ -10,4 +10,4 @@ h1 = I18n.t('views.settings')
       = button_to I18n.t('views.change_password'), edit_user_registration_path, method: :get,class: 'btn btn-primary'
 
     p.buffer-top
-      = button_to I18n.t('views.delete_account'), registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'
+      = button_to I18n.t('views.delete_account'), registration_path(@user), data: { confirm: I18n.t('user.destroy_confirm')}, method: :delete, class: 'btn btn-danger'

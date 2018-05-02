@@ -10,7 +10,7 @@
 
     em
       '
-      = l comment.created_at, format: :short
+      = l comment.created_at, format: :long
 
     - if current_user_can_edit?(comment)
       '
