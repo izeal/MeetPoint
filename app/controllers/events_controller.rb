@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :all_list, :past_list]
   before_action :set_event, only: [:show]
   before_action :set_current_user_event, only: [:edit, :update, :destroy]
 
   def index
-    @events = Event.paginate(:page => params[:page], :per_page => 12)
+    @events = Event.paginate(:page => params[:page], :per_page => 12).future
   end
 
   def show
@@ -41,6 +41,16 @@ class EventsController < ApplicationController
     user = @event.user
     @event.destroy
     redirect_to user_path(user), notice: I18n.t('controllers.events.destroyed')
+  end
+
+  def past_list
+    @events = Event.paginate(:page => params[:page], :per_page => 12).past
+    render :index
+  end
+
+  def all_list
+    @events = Event.paginate(:page => params[:page], :per_page => 12).asc
+    render :index
   end
 
   private

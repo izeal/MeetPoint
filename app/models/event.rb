@@ -9,7 +9,11 @@ class Event < ApplicationRecord
   }
 
   scope :past, ->{
-    order((@event.datetime < Time.now) => :asc)
+    where('datetime < ?', Time.now).order(datetime: :desc)
+  }
+
+  scope :future, ->{
+    where('datetime > ?', Time.now).order(datetime: :asc)
   }
 
   validates :title, presence: true, length: { maximum: 255 }

@@ -6,12 +6,14 @@ h1 = I18n.t('views.events.events')
   = link_to I18n.t('views.create_event'), new_event_path, class: 'btn btn-success'
 
 .buffer-both
-  = link_to 'Прошедшие события', new_event_path, class: 'btn btn-success'
+  = link_to 'Прошедшие события', past_events_path(list: :past), method: :get, class: 'btn btn-primary'
+  = link_to 'Все', all_events_path, method: :get, class: 'btn btn-primary'
+  = link_to 'Будущие события', root_path, class: 'btn btn-primary'
 
   p = will_paginate
 
 .row.buffer-bottom
-  = render partial: 'events/event', collection: @events.asc
+  = render partial: 'events/event', collection: @events
 
 .buffer-both
   = will_paginate
