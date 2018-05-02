@@ -5,10 +5,13 @@ h1 = I18n.t('views.events.events')
 .buffer-both
   = link_to I18n.t('views.create_event'), new_event_path, class: 'btn btn-success'
 
+.buffer-both
+  = link_to 'Прошедшие события', new_event_path, class: 'btn btn-success'
+
   p = will_paginate
 
 .row.buffer-bottom
-  = render partial: 'events/event', collection: @events.desc
+  = render partial: 'events/event', collection: @events.asc
 
 .buffer-both
   = will_paginate

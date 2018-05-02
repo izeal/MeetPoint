@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
   before_action :set_event, only: [:create, :destroy]
   before_action :set_subscription, only: [:destroy]
+  before_action :check_email_duplication, only: [:create]
 
   def create
     @new_subscription = @event.subscriptions.build(subscription_params)
@@ -39,5 +40,12 @@ class SubscriptionsController < ApplicationController
 
   def subscription_params
     params.fetch(:subscription, {}).permit(:user_name, :user_email)
+  end
+
+  def check_email_duplication
+    return if current_user
+    if User.find_by(email: params[:subscription][:user_email])
+      redirect_to @event, alert: I18n.t('controllers.subscription.email_duplication')
+    end
   end
 end
