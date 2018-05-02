@@ -3,6 +3,6 @@ span.user
     = image_tag user_avatar(user), class: "img-icon"
   span.user-name
     - if request.path == user_path(user)
-      user.name
+      = " #{user.name}"
     - else
-      = link_to user.name, user_path(user)
+      = link_to " #{user.name}", user_path(user)

@@ -17,7 +17,7 @@
               .buffer-top
                 = link_to I18n.t('views.events.change'), edit_event_path(@event), class: 'btn btn-primary'
                 = ' '
-                = link_to I18n.t('views.events.delete'), @event, method: :delete, class: 'btn'
+                = link_to I18n.t('views.events.delete'), @event, method: :delete, data: { confirm: I18n.t('views.events.destroy_confirm')}, class: 'btn'
 
   .row
     .col-md-8
@@ -28,16 +28,12 @@
 
     .col-md-4
       .event-owner
-        h4
-          | Зовет:
+        h4 = I18n.t('subscriptions.subscription.creator')
         p = render partial: 'users/user', object: @event.user
 
       .event-subscriptions
-        h4
-          | Пойдут:
+        h4 = I18n.t('subscriptions.subscription.followers')
         p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
 
       .event-subsription-form
-        h4
-          | Я пойду
         p = render partial: 'subscriptions/form', locals: { subscription: @new_subscription || @event.subscriptions.build }

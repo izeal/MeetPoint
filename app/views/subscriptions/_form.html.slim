@@ -4,10 +4,10 @@
   - unless user_signed_in?
     .form-group
       = f.label :user_name
-      = f.text_field :user_name, class: 'form-control'
+      = f.text_field :user_name, placeholder: :user_name, class: 'form-control'
 
     .form-group
       = f.label :user_email
-      = f.text_field :user_email, class: 'form-control'
+      = f.text_field :user_email, placeholder: :user_email, class: 'form-control'
 
-  .actions = f.submit 'Подписаться', class: 'btn btn-primary'
+  .actions = f.submit I18n.t('subscriptions.subscription.subscribe'), class: 'btn btn-primary'

@@ -3,6 +3,8 @@ ru:
     models:
       user: 'Пользователь'
       event: 'Событие'
+      subscription: 'Подписка'
+      comment: 'Комментарий'
     attributes:
       user:
         email: 'Email'
@@ -14,6 +16,12 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+      comment:
+        body: 'Комментарий'
+        user_name: 'Ваше имя'
+      subscription:
+        user_name: 'Ваше имя'
+        user_email: 'Ваш email'
 
   controllers:
     events:
@@ -54,16 +62,21 @@ ru:
       change: 'Изменить'
       events: 'События'
       edit: 'Редактировать событие'
+      destroy_confirm: 'Вы уверены что хотите удалить это событие?'
 
   will_paginate:
     previous_label: "Назад"
     next_label: "Вперед"
     page_gap: "…"
 
-  comments:
-    comment:
-      destroy_confirm: 'Вы уверны что хотите удалить этот комментарий?'
-
   subscriptions:
     subscription:
       destroy_confirm: 'Вы уверы что хотите удалить эту подписку?'
+      followers: 'Пойдут:'
+      creator: 'Зовет:'
+      subscribe: 'Подписаться'
+
+  comments:
+    send: 'Отправить'
+    comment:
+      destroy_confirm: 'Вы уверны что хотите удалить этот комментарий?'
