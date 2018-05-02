@@ -11,6 +11,6 @@
       - if @user.events.any?
         h3 = I18n.t('views.organized')
         .row
-          = render partial: 'events/event', collection: @user.events
+          = render partial: 'events/event', collection: @user.events.asc
       - else
         p.buffer-top = I18n.t('views.organized_nothing')
