@@ -6,7 +6,7 @@ h1 = I18n.t('views.events.events')
   = link_to I18n.t('views.create_event'), new_event_path, class: 'btn btn-success'
 
 .buffer-both
-  = link_to 'Прошедшие события', past_events_path(list: :past), method: :get, class: 'btn btn-primary'
+  = link_to 'Прошедшие события', past_events_path, method: :get, class: 'btn btn-primary'
   = link_to 'Все', all_events_path, method: :get, class: 'btn btn-primary'
   = link_to 'Будущие события', root_path, class: 'btn btn-primary'
 
