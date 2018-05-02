@@ -1,9 +1,13 @@
-= form_for @subscription do |f|
-  - if @subscription.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@subscription.errors.count, "error")} prohibited this subscription from being saved:"
-      ul
-        - @subscription.errors.full_messages.each do |message|
-          li = message
+= form_for [@event, subscription] do |f|
+  = render partial: 'partials/errors_viewer', locals: { model: subscription }
 
-  .actions = f.submit
+  - unless user_signed_in?
+    .form-group
+      = f.label :user_name
+      = f.text_field :user_name, class: 'form-control'
+
+    .form-group
+      = f.label :user_email
+      = f.text_field :user_email, class: 'form-control'
+
+  .actions = f.submit 'Подписаться', class: 'btn btn-primary'

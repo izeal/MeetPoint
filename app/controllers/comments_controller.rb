@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     else
       message = { alert: I18n.t('controllers.comments.error')}
     end
-    redirect_to @event, massage
+    redirect_to @event, message
   end
 
   private

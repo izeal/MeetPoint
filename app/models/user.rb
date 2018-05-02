@@ -16,4 +16,12 @@ class User < ApplicationRecord
             uniqueness: true,
             format: { with: VALID_EMAIL_REGEX }
 
+  after_commit :link_subscriptions, on: :create
+
+  private
+
+  def link_subscriptions
+    Subscription.where(user_id: nil, user_email: self.email).
+      update_all(user_id: self.id)
+  end
 end

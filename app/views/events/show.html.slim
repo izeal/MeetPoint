@@ -22,8 +22,9 @@
   .row
     .col-md-8
       .event-comments.buffer-top
+        = render partial: 'comments/form', locals: { comment: @new_comment || @event.comments.build }
         .buffer-both
-          = render partial: 'comments/comment', collection: @event.comments
+          = render partial: 'comments/comment', collection: @event.comments.except(@new_comment)
 
     .col-md-4
       .event-owner
@@ -34,8 +35,9 @@
       .event-subscriptions
         h4
           | Пойдут:
-        p = render partial: 'subscriptions/subscription', collection: @event.subscriptions
+        p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
 
       .event-subsription-form
         h4
           | Я пойду
+        p = render partial: 'subscriptions/form', locals: { subscription: @new_subscription || @event.subscriptions.build }
