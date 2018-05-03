@@ -9,6 +9,11 @@
     = f.label :email
     = f.text_field :email, autofocus: true, class: 'form-control', placeholder: :email
 
+  .form-group
+    = f.label :avatar
+    p = image_tag(@user.avatar.thumb.url) if @user.avatar?
+    = f.file_field :avatar
+
   .actions
     = f.submit I18n.t('views.save'), class: 'btn btn-primary'
     = I18n.t('views.or')
