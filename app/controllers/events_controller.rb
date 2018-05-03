@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   def show
     @new_comment = @event.comments.build(params[:comment])
     @new_subscription = @event.subscriptions.build(params[:subscription])
+    @subscription = current_user.subscriptions.find_by(event_id: @event.id)
   end
 
   def new
