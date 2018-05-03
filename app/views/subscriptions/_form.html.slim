@@ -10,5 +10,8 @@
       = f.label :user_email
       = f.text_field :user_email, placeholder: :user_email, class: 'form-control'
 
-  - unless current_user_can_edit?(@event)
+  - unless user_owner_of?(@event) || user_subscribed?(@event)
     .actions = f.submit I18n.t('subscriptions.subscription.subscribe'), class: 'btn btn-primary'
+
+  - if user_subscribed?(@event)
+     = link_to "Отписаться", event_subscription_path(@event, current_user.subscriptions.find_by(event_id: @event.id).id), method: :delete, data: { confirm: t('subscriptions.subscription.destroy_confirm') }, class: 'btn btn-primary'
