@@ -25,6 +25,7 @@ gem 'rmagick'
 
 gem 'faker'
 gem 'will_paginate'
+gem 'fog-aws'
 
 group :development, :test do
   gem 'byebug'
