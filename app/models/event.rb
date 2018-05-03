@@ -2,7 +2,8 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
-  has_many :subcribers, through: :subscriptions, source: :user
+  has_many :subscribers, through: :subscriptions, source: :user
+  has_many :photos
 
   scope :asc, ->{
     order(datetime: :asc)
@@ -21,5 +22,7 @@ class Event < ApplicationRecord
   validates :address, presence: true, length: { maximum: 255 }
   validates :user, presence: true
 
-
+  def visitors
+    (subscribers + [user]).uniq
+  end
 end

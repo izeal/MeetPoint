@@ -3,6 +3,20 @@ module ApplicationHelper
     user.avatar? ? user.avatar.url : asset_path('avatar.jpg')
   end
 
+  def user_avatar_thumb(user)
+    user.avatar.file ? user.avatar.thumb.url : asset_path('avatar.jpg')
+  end
+
+  def event_photo(event)
+    photos = event.photos.persisted
+    photos.any? ? photos.sample.photo.url : asset_path('old-map.jpg')
+  end
+
+  def event_thumb(event)
+    photos = event.photos.persisted
+    photos.any? ? photos.sample.photo.thumb.url : asset_path('mountains.jpg')
+  end
+
   def errors_viewer(resource)
     return nil if resource.errors.empty?
 

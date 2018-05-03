@@ -6,11 +6,11 @@
     p.buffer-top
       = link_to I18n.t('views.create_event'), new_event_path, class: 'btn btn-success'
 
-  .row
-    .col-md-12
-      - if @user.events.any?
-        h3 = I18n.t('views.organized')
-        .row
-          = render partial: 'events/event', collection: @user.events.asc
-      - else
-        p.buffer-top = I18n.t('views.organized_nothing')
+.row
+  .col-md-12
+    - if @user.events.any?
+      h3 = I18n.t('views.organized')
+      .row
+        = render partial: 'events/event', collection: @user.events.asc
+    - else
+      p.buffer-top = I18n.t('views.organized_nothing')

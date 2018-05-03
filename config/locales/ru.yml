@@ -5,6 +5,8 @@ ru:
       event: 'Событие'
       subscription: 'Подписка'
       comment: 'Комментарий'
+      avatar: "Аватарка"
+      photo: "Фото"
     attributes:
       user:
         email: 'Email'
@@ -41,6 +43,11 @@ ru:
       error: 'Подписка/отписка не сработала'
       alert_for_owner: 'Вы не можете подписаться на событие т.к. являетсь его создателем'
       email_duplication: 'Войдите в свой аккаунт, чтобы принять участие в данном событии'
+      photos:
+        error: 'Что то не так с фоткой'
+        created: 'Вы добавили фотографию к событию'
+        destroyed: 'Вы удалили фотку'
+
   views:
     password_min_length: 'символов минимум'
     sign_in: 'Зарегистрироваться'

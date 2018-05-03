@@ -3,7 +3,7 @@
 .event
   .event-info.row
     .col-md-12
-      = content_tag 'div', '', class: 'event-background', style: "background-image: url(#{asset_path('old-map.jpg')})"
+      = content_tag 'div', '', class: 'event-background', style: "background-image: url(#{event_photo(@event)})"
       .event-info-inner.row
         .col-md-6
           .event-description
@@ -21,6 +21,14 @@
 
   .row
     .col-md-8
+      .event-photos
+
+        .event-photos-gallery
+          = render partial: 'photos/photo', collection: @event.photos.except(@new_photo)
+
+        .event-photo-form
+          = render partial: 'photos/form', locals: { photo: @new_photo || @event.photo.build }
+
       .event-comments.buffer-top
         = render partial: 'comments/form', locals: { comment: @new_comment || @event.comments.build }
         .buffer-both
