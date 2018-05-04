@@ -25,6 +25,8 @@ ru:
       subscription:
         user_name: 'Ваше имя'
         user_email: 'Ваш email'
+      photo:
+        photo: 'Фото'
 
   controllers:
     events:
@@ -43,10 +45,10 @@ ru:
       error: 'Подписка/отписка не сработала'
       alert_for_owner: 'Вы не можете подписаться на событие т.к. являетсь его создателем'
       email_duplication: 'Войдите в свой аккаунт, чтобы принять участие в данном событии'
-      photos:
-        error: 'Что то не так с фоткой'
-        created: 'Вы добавили фотографию к событию'
-        destroyed: 'Вы удалили фотку'
+    photos:
+      error: 'Что то не так с фоткой'
+      created: 'Вы добавили фотографию к событию'
+      destroyed: 'Вы удалили фотку'
 
   views:
     password_min_length: 'символов минимум'
@@ -73,6 +75,9 @@ ru:
       events: 'События'
       edit: 'Редактировать событие'
       destroy_confirm: 'Вы уверены что хотите удалить это событие?'
+    photos:
+      download: 'Загрузить'
+      add: 'добавил'
 
   will_paginate:
     previous_label: "Назад"
@@ -93,3 +98,7 @@ ru:
 
   user:
     destroy_confirm: 'Вы уверены что хотите удалить профиль?'
+
+  errors:
+    messages:
+      extension_whitelist_error: 'вы можете прикреплять только файлы с разрешениями .jpg .jpeg .gif .png'

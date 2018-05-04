@@ -7,18 +7,18 @@ class PhotosController < ApplicationController
     @new_photo.user = current_user
 
     if @new_photo.save
-      redirect_to @event, notice: I18n.t('controller.photos.created')
+      redirect_to @event, notice: I18n.t('controllers.photos.created')
     else
-      render 'events/show', alert: I18n.t('controller.photos.error')
+      render 'events/show', alert: I18n.t('controllers.photos.error')
     end
   end
 
   def destroy
-    message = I18n.t('controller.photos.destroyed')
-    if current_user_can_edit?
+    message = { notice: I18n.t('controllers.photos.destroyed') }
+    if current_user_can_edit?(@photo)
       @photo.destroy
     else
-      message = I18n.t('controller.photos.error')
+      message = { alert: I18n.t('controllers.photos.error') }
     end
     redirect_to @event, message
   end
@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
   end
 
   def set_photo
-    @photo = Event.photos.find(params[:id])
+    @photo = @event.photos.find(params[:id])
   end
 
   def photo_params

@@ -3,7 +3,7 @@
 
   .form-group
     = f.label :photo
-    = f.file_field :photo
+    = f.file_field :photo, class: 'btn btn-primary'
 
   .actions
-    = f.submit 'Загрузить', class: 'btn btn-primary'
+    = f.submit I18n.t('views.photos.download'), class: 'btn btn-primary'

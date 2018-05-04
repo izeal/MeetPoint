@@ -1,23 +1,7 @@
 - provide(:title, I18n.t('activerecord.models.event'))
 
 .event
-  .event-info.row
-    .col-md-12
-      = content_tag 'div', '', class: 'event-background', style: "background-image: url(#{event_photo(@event)})"
-      .event-info-inner.row
-        .col-md-6
-          .event-description
-            h1 = @event.title
-            h3 = l @event.datetime, format: :long
-            h3
-              small = link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}"
-            p = @event.description
-
-            - if current_user_can_edit?(@event)
-              .buffer-top
-                = link_to I18n.t('views.events.change'), edit_event_path(@event), class: 'btn btn-primary'
-                = ' '
-                = link_to I18n.t('views.events.delete'), @event, method: :delete, data: { confirm: I18n.t('views.events.destroy_confirm')}, class: 'btn'
+  = render partial: 'events/event_large', object: @event
 
   .row
     .col-md-8
@@ -27,7 +11,7 @@
           = render partial: 'photos/photo', collection: @event.photos.except(@new_photo)
 
         .event-photo-form
-          = render partial: 'photos/form', locals: { photo: @new_photo || @event.photo.build }
+          = render partial: 'photos/form', locals: { photo: @new_photo || @event.photos.build }
 
       .event-comments.buffer-top
         = render partial: 'comments/form', locals: { comment: @new_comment || @event.comments.build }
