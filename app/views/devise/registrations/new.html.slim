@@ -14,12 +14,12 @@
           fieldset.form-group
             = f.label :email
             br
-            = f.email_field :email, autofocus: true, class: 'form-control', placeholder: :email
+            = f.email_field :email, autofocus: true, class: 'form-control', placeholder: true
 
           fieldset.form-group
             = f.label :name
             br
-            = f.text_field :name, autofocus: true, class: 'form-control', placeholder: :name
+            = f.text_field :name, autofocus: true, class: 'form-control', placeholder: true
 
           fieldset.form-group
             = f.label :password
@@ -27,12 +27,12 @@
               em
                 = "(#{@minimum_password_length} #{I18n.t('views.password_min_length')})"
             br
-            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: :password
+            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: true
 
           fieldset.form-group
             = f.label :password_confirmation
             br
-            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: true
 
           .actions
             = f.submit I18n.t('views.sign_in'), class: 'btn btn-primary'

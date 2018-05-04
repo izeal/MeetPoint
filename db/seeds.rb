@@ -2,6 +2,7 @@ User.create(
     name:'Ivan',
     email: 'foo@bar.baz',
     password: 'foobar',
+    # avatar: 'https://avatars3.githubusercontent.com/u/31633474?s=460&v=4'
 )
 
 Faker::UniqueGenerator.clear
@@ -61,7 +62,18 @@ events.each do |event|
   rand(1..6).times do
     event.comments.create(body: Faker::Simpsons.quote, user_id: User.all.sample.id)
   end
-  rand(0..10).times do
+  puts "Начинаю подписки"
+  rand(1..10).times do
     event.subscriptions.create(user_id: User.all.sample.id)
+  end
+  puts "Подписки закончены"
+  if event.subscriptions.any?
+    puts "есть подписка"
+    rand(0..1).times do
+      puts "начинаю грузить фотку"
+      event.photos.create(remote_photo_url: Faker::LoremPixel.image, user_id: event.subscriptions.sample.user_id)
+      puts "фото загружено"
+    end
+    puts "все фото к событию загружены"
   end
 end

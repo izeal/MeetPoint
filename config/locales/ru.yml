@@ -102,3 +102,24 @@ ru:
   errors:
     messages:
       extension_whitelist_error: 'вы можете прикреплять только файлы с разрешениями .jpg .jpeg .gif .png'
+
+  helpers:
+    placeholder:
+      user:
+        email: 'Email'
+        name: 'Имя'
+        avatar: 'Аватарка'
+        password: 'Введите пароль'
+        password_confirmation: 'Подтверждение пароля'
+      event:
+        title: 'Название'
+        address: 'Место проведения'
+        datetime: 'Дата и время'
+        description: 'Описание предстоящего собятия'
+      comment:
+        body: 'Оставьте здесь Ваш комментарий'
+        user_name: 'Ваше имя'
+      subscription:
+        user_name: 'Ваше имя'
+        user_email: 'Ваш email'
+
