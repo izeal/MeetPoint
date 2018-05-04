@@ -15,32 +15,32 @@ Faker::UniqueGenerator.clear
   )
 end
 
-26.times do |n|
-  name = Faker::LordOfTheRings.unique.character.gsub(" ", "_")
-  User.create(
-    name: name,
-    email: "#{name}@bar.baz",
-    password: 'foobar'
-  )
-end
+# 26.times do |n|
+#   name = Faker::LordOfTheRings.unique.character.gsub(" ", "_")
+#   User.create(
+#     name: name,
+#     email: "#{name}@bar.baz",
+#     password: 'foobar'
+#   )
+# end
 
-35.times do |n|
-  name = Faker::Hobbit.unique.character.gsub(" ", "_")
-  User.create(
-    name: name,
-    email: "#{name}@bar.baz",
-    password: 'foobar'
-  )
-end
+# 35.times do |n|
+#   name = Faker::Hobbit.unique.character.gsub(" ", "_")
+#   User.create(
+#     name: name,
+#     email: "#{name}@bar.baz",
+#     password: 'foobar'
+#   )
+# end
 
-30.times do |n|
-  name = Faker::Simpsons.unique.character.gsub(" ", "_")
-  User.create(
-    name: name,
-    email: "#{name}@bar.baz",
-    password: 'foobar'
-  )
-end
+# 30.times do |n|
+#   name = Faker::Simpsons.unique.character.gsub(" ", "_")
+#   User.create(
+#     name: name,
+#     email: "#{name}@bar.baz",
+#     password: 'foobar'
+#   )
+# end
 
 users = User.all
 users.each do |user|

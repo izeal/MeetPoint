@@ -12,6 +12,6 @@
       '
       = l comment.created_at, format: :long
 
-    - if current_user_can_edit?(comment)
+    - if current_user_can_edit?(comment) || user_owner_of?(@event)
       '
       = link_to fa_icon('trash'), event_comment_path(comment.event, comment), method: :delete, data: { confirm: t('.destroy_confirm') }
