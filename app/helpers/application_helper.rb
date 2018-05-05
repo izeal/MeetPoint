@@ -1,10 +1,10 @@
 module ApplicationHelper
   def user_avatar(user)
-    user.avatar? ? user.avatar.url : asset_path('avatar.jpg')
+    user.avatar? ? user.avatar.url : Faker::Avatar.image
   end
 
   def user_avatar_thumb(user)
-    user.avatar.file ? user.avatar.thumb.url : asset_path('avatar.jpg')
+    user.avatar.file ? user.avatar.thumb.url : Faker::Avatar.image #asset_path('avatar.jpg')
   end
 
   def event_photo(event)
