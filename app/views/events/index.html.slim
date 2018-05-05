@@ -7,7 +7,9 @@ h1 = I18n.t('views.events.events')
 
 .buffer-both
   = link_to 'Прошедшие события', past_events_path, method: :get, class: 'btn btn-primary'
+  '
   = link_to 'Все', all_events_path, method: :get, class: 'btn btn-primary'
+  '
   = link_to 'Будущие события', root_path, class: 'btn btn-primary'
 
   p = will_paginate

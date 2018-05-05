@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
     @new_subscription.user = current_user
 
     if current_user == @event.user
-        redirect_to @event, alert: I18n.t('controllers.subscription.alert_for_owner')
+      redirect_to @event, alert: I18n.t('controllers.subscription.alert_for_owner')
     elsif @new_subscription.save
       redirect_to @event, notice: I18n.t('controllers.subscription.created')
     else
@@ -44,7 +44,7 @@ class SubscriptionsController < ApplicationController
 
   def check_email_duplication
     return if current_user
-    if User.find_by(email: params[:subscription][:user_email])
+    if User.find_by(email: subscription_params[:user_email])
       redirect_to @event, alert: I18n.t('controllers.subscription.email_duplication')
     end
   end
