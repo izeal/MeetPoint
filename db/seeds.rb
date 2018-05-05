@@ -58,13 +58,17 @@ end
 
 events = Event.all
 events.each do |event|
-  rand(1..6).times do
+  rand(0..6).times do
     event.comments.create(body: Faker::Simpsons.quote, user_id: User.all.sample.id)
   end
-  rand(1..10).times do
+  rand(0..10).times do
     event.subscriptions.create(user_id: User.all.sample.id)
   end
-  if event.subscriptions.any?
+end
+
+
+events.each do |event|
+    if event.subscriptions.any?
     rand(0..3).times do
       event.photos.create(remote_photo_url: Faker::LoremPixel.image, user_id: event.subscriptions.sample.user_id)
     end
