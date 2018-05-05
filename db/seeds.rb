@@ -66,11 +66,10 @@ events.each do |event|
   end
 end
 
-
-events.each do |event|
-    if event.subscriptions.any?
-    rand(0..3).times do
-      event.photos.create(remote_photo_url: Faker::LoremPixel.image, user_id: event.subscriptions.sample.user_id)
-    end
-  end
-end
+# events.each do |event|
+#     if event.subscriptions.any?
+#     rand(0..3).times do
+#       event.photos.create(remote_photo_url: Faker::LoremPixel.image, user_id: event.subscriptions.sample.user_id)
+#     end
+#   end
+# end

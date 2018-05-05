@@ -3,7 +3,7 @@ span.subscription
     = render partial: 'users/user', object: subscription.user
   - else
     em = subscription.user_name
-    '
+    '  |
 
   - if current_user_can_edit?(subscription)
     '
