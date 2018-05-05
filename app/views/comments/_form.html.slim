@@ -8,6 +8,6 @@
   - unless user_signed_in?
     .form-group
       = f.label :user_name
-      = f.text_area :user_name, placeholder: true, class: 'form-control'
+      = f.text_field :user_name, placeholder: true, class: 'form-control'
 
   .actions = f.submit I18n.t('comments.send'), class: 'btn btn-primary'
