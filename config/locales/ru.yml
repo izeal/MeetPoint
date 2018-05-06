@@ -123,3 +123,17 @@ ru:
         user_name: 'Ваше имя'
         user_email: 'Ваш email'
 
+  event_mailer:
+    comment:
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    subscription:
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'

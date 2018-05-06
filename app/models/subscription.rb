@@ -1,5 +1,5 @@
 class Subscription < ApplicationRecord
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   belongs_to :event
   belongs_to :user, optional: true
@@ -9,10 +9,10 @@ class Subscription < ApplicationRecord
   validates :user_email,
             presence: true,
             format: VALID_EMAIL_REGEX,
+            uniqueness: { scope: :event_id },
             unless: -> { user }
 
   validates :user, uniqueness: { scope: :event_id }, if: -> { user }
-  validates :user_email, uniqueness: { scope: :event_id }, unless: -> { user }
 
   def user_name
     user ? user.name : super

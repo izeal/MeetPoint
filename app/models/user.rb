@@ -1,8 +1,8 @@
 class User < ApplicationRecord
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   before_validation { email.downcase! }
   has_many :events, dependent: :destroy
