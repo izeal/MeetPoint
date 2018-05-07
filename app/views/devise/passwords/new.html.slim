@@ -18,6 +18,6 @@
             = f.email_field :email, autofocus: true, class: 'form-control', placeholder: true
 
           .actions
-            = f.submit, I18n.t(views.send_me), class: 'btn btn-primary'
+            = f.submit I18n.t(views.send_me), class: 'btn btn-primary'
 
         = render "devise/shared/links"
