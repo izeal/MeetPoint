@@ -79,6 +79,7 @@ ru:
     photos:
       download: 'Загрузить'
       add: 'добавил'
+      destroy_confirm: 'Вы уверены что хотите удалить эту фотографию?'
 
   will_paginate:
     previous_label: "Назад"
@@ -132,7 +133,7 @@ ru:
       datetime: 'Состоится'
       owner: 'Организатор'
     subscription:
-      title: 'Новая подписка'
+      title: 'На ваше событие подписались!'
       name: 'Имя'
       email: 'Email'
       event: 'Событие'

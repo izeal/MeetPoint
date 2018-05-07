@@ -10,7 +10,7 @@
         .event-photos-gallery
           = render partial: 'photos/photo', collection: @event.photos.except(@new_photo)
 
-        - if user_subscribed?(@event)
+        - if user_subscribed?(@event) || user_owner_of?(@event)
           .event-photo-form
             = render partial: 'photos/form', locals: { photo: @new_photo || @event.photos.build }
 

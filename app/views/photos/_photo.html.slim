@@ -3,7 +3,7 @@
 
   - if user_owner_of?(photo) || user_owner_of?(@event)
     '
-    = link_to fa_icon('times'), event_photo_path(photo.event, photo), method: :delete, data: { confirm: t('.destroy_confirm') }
+    = link_to fa_icon('times'), event_photo_path(photo.event, photo), method: :delete, data: { confirm: t('views.photos.destroy_confirm') }
 
   = t('views.photos.add')
   = render partial: 'users/user', object: photo.user

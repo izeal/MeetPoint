@@ -1,0 +1,22 @@
+h1 = "В #{@event.title} добавили фотографию"
+
+= image_tag(@photo.photo.thumb.url)
+p
+  |
+  ' Автор фотографии
+  '  :
+strong
+  = @photo.user.name
+
+hr
+
+p = event_url(@event)
+
+' Событие:
+h3 = @event.title
+
+' Время проведения
+h4 = l @event.datetime
+
+' Организатор
+h4 = @event.user.name

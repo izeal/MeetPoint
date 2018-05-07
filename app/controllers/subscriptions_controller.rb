@@ -21,6 +21,7 @@ class SubscriptionsController < ApplicationController
     message = { notice: I18n.t('controllers.subscription.destroyed') }
 
     if current_user_can_edit?(@subscription)
+      EventMailer.subscription_destroy(@event, @subscription).deliver_now
       @subscription.destroy
     else
       message = { alert: I18n.t('controllers.subscription.error') }
