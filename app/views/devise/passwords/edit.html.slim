@@ -14,7 +14,7 @@
           = f.hidden_field :reset_password_token
 
           fieldset.form-group
-            = f.label :password, "Новый пароль"
+            = f.label :password, I18n.t('views.new_password')
             br
             - if @minimum_password_length
               em
@@ -23,11 +23,11 @@
             = f.password_field :password, autofocus: true, autocomplete: "off", placeholder: true, class: 'form-control'
 
           fieldset.form-group
-            = f.label :password_confirmation, "Подтверждение пароля"
+            = f.label :password_confirmation
             br
             = f.password_field :password_confirmation, autocomplete: "off", placeholder: true, class: 'form-control'
 
           .actions
-            = f.submit "Сохранить", class: 'btn btn-primary'
+            = f.submit I18n.t(views.save), class: 'btn btn-primary'
 
         = render "devise/shared/links"

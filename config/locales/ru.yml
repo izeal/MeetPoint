@@ -68,6 +68,7 @@ ru:
     back: 'вернуться'
     new_password: 'новый пароль'
     current_password: 'текущий пароль'
+    send_me: 'Выслать мне для восстановления пароля'
 
     events:
       delete: 'Удалить'
