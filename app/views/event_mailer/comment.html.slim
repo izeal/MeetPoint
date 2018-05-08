@@ -5,16 +5,3 @@ p
   = t '.author'
   '  :
   strong = @comment.user_name
-
-hr
-
-p = event_url(@event)
-
-= t '.event'
-h3 = @event.title
-
-= t '.datetime'
-h4 = l @event.datetime
-
-= t '.owner'
-h4 = @event.user.name

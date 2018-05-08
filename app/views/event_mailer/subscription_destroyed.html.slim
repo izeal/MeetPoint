@@ -12,15 +12,3 @@ p
   ' :
   strong = link_to @email, "mailto: #{@email}"
 
-hr
-
-p = event_url(@event)
-
-' Событие
-h3 = @event.title
-
-' Состоится
-h4 = l @event.datetime
-
-' Организатор
-h4 = @event.user.name

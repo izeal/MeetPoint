@@ -8,15 +8,3 @@ p
 strong
   = @photo.user.name
 
-hr
-
-p = event_url(@event)
-
-' Событие:
-h3 = @event.title
-
-' Время проведения
-h4 = l @event.datetime
-
-' Организатор
-h4 = @event.user.name
