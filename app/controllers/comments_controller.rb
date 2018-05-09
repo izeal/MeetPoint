@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
   end
 
   def participants_emails(event)
-    (event.subscriptions.map(&:user_email) + [event.user.email] - [current_user.email]).uniq
+    (event.subscriptions.map(&:user_email) + [event.user.email] - [current_user.try(:email)]).uniq
   end
 
   def notify_participants(event, comment, destroy = false)
