@@ -10,8 +10,8 @@ class SubscriptionsController < ApplicationController
     if current_user == @event.user
       redirect_to @event, alert: I18n.t('controllers.subscription.alert_for_owner')
     elsif @new_subscription.save
-      EventMailer.subscription(@event, @new_subscription).deliver_now
       redirect_to @event, notice: I18n.t('controllers.subscription.created')
+      EventNotifier.execute(@new_subscription)
     else
       render 'events/show', alert: I18n.t('controllers.subscription.error')
     end
@@ -21,8 +21,8 @@ class SubscriptionsController < ApplicationController
     message = { notice: I18n.t('controllers.subscription.destroyed') }
 
     if current_user_can_edit?(@subscription)
-      EventMailer.subscription_destroyed(@event, @subscription).deliver_now
-      @subscription.destroy
+      @subscription.destroy!
+      EventNotifier.execute(@subscription)
     else
       message = { alert: I18n.t('controllers.subscription.error') }
     end

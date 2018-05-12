@@ -8,7 +8,8 @@ class PhotosController < ApplicationController
 
     if @new_photo.save
       redirect_to @event, notice: I18n.t('controllers.photos.created')
-      notify_participants(@new_photo)
+      # notify_participants(@new_photo)
+      EventNotifier.execute(@new_photo)
     else
       render 'events/show', alert: I18n.t('controllers.photos.error')
     end
@@ -18,7 +19,8 @@ class PhotosController < ApplicationController
     message = { notice: I18n.t('controllers.photos.destroyed') }
     if current_user_can_edit?(@photo)
       @photo.destroy!
-      notify_participants(@photo)
+      # notify_participants(@photo)
+      EventNotifier.execute(@photo)
     else
       message = { alert: I18n.t('controllers.photos.error') }
     end
@@ -39,16 +41,16 @@ class PhotosController < ApplicationController
     params.fetch(:photo, {}).permit(:photo)
   end
 
-  def notify_participants(photo)
-    emails = participants_emails(photo.event)
-    if photo.destroyed?
-      emails.each {
-        |mail| EventMailer.photo_destroyed(photo, mail).deliver_now
-      }
-    else
-      emails.each {
-        |mail| EventMailer.photo(photo, mail).deliver_now
-      }
-    end
-  end
+  # def notify_participants(photo)
+  #   emails = participants_emails(photo.event)
+  #   if photo.destroyed?
+  #     emails.each {
+  #       |mail| EventMailer.photo_destroyed(photo, mail).deliver_now
+  #     }
+  #   else
+  #     emails.each {
+  #       |mail| EventMailer.photo(photo, mail).deliver_now
+  #     }
+  #   end
+  # end
 end

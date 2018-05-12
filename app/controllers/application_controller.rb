@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     event.subscriptions.find_by(user_id: current_user.id)
   end
 
-  def participants_emails(event)
-    (event.subscriptions.preload(:user).map(&:user_email) + [event.user.email] - [current_user.try(:email)]).uniq
-  end
+  # def participants_emails(event)
+  #   (event.subscriptions.preload(:user).map(&:user_email) + [event.user.email] - [current_user.try(:email)]).uniq
+  # end
 end
