@@ -38,10 +38,6 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body, :user_name)
   end
 
-  def participants_emails(event)
-    (event.subscriptions.map(&:user_email) + [event.user.email] - [current_user.try(:email)]).uniq
-  end
-
   def notify_participants(event, comment, destroy = false)
     emails = participants_emails(event)
     if destroy

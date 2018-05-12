@@ -39,10 +39,6 @@ class PhotosController < ApplicationController
     params.fetch(:photo, {}).permit(:photo)
   end
 
-  def participants_emails(event)
-    (event.subscriptions.map(&:user_email) + [event.user.email] - [current_user.email]).uniq
-  end
-
   def notify_participants(event, photo, destroy = false)
     emails = participants_emails(event)
     if destroy
