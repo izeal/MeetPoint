@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
     @new_comment = @event.comments.build(comment_params)
     @new_comment.user = current_user
     if @new_comment.save
-      notify_participants(@event, @new_comment)
       redirect_to @event, notice: I18n.t('controllers.comments.created')
+      notify_participants(@new_comment)
     else
       render 'events/show', alert: I18n.t('controllers.comments.error')
     end
@@ -16,8 +16,8 @@ class CommentsController < ApplicationController
   def destroy
     message = { notice: I18n.t('controllers.comments.destroyed')}
     if current_user_can_edit?(@comment)
-      notify_participants(@event, @comment, true)
       @comment.destroy!
+      notify_participants(@comment)
     else
       message = { alert: I18n.t('controllers.comments.error')}
     end
@@ -38,15 +38,15 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body, :user_name)
   end
 
-  def notify_participants(event, comment, destroy = false)
-    emails = participants_emails(event)
-    if destroy
+  def notify_participants(comment)
+    emails = participants_emails(comment.event)
+    if comment.destroyed?
       emails.each {
-        |mail| EventMailer.comment_destroyed(event, comment, mail).deliver_now
+        |mail| EventMailer.comment_destroyed(comment, mail).deliver_now
       }
     else
       emails.each {
-        |mail| EventMailer.comment(event, comment, mail).deliver_now
+        |mail| EventMailer.comment(comment, mail).deliver_now
       }
     end
   end

@@ -15,31 +15,31 @@ class EventMailer < ApplicationMailer
     mail to: event.user.email, subject: "От #{event.title} отписались"
   end
 
-  def comment(event, comment, email)
+  def comment(comment, email)
     @comment = comment
-    @event = event
+    @event = @comment.event
 
-    mail to: email, subject: "Новый комментарий на #{event.title}"
+    mail to: email, subject: "Новый комментарий на #{@event.title}"
   end
 
-  def comment_destroyed(event, comment, email)
+  def comment_destroyed(comment, email)
     @comment = comment
-    @event = event
+    @event = @comment.event
 
-    mail to: email, subject: "Комментарий для #{event.title} удален"
+    mail to: email, subject: "Комментарий для #{@event.title} удален"
   end
 
-  def photo(event, photo, email)
+  def photo(photo, email)
     @photo = photo
-    @event = event
+    @event = @photo.event
 
-    mail to: email, subject: "В #{event.title} добавили фотографию!"
+    mail to: email, subject: "В #{@event.title} добавили фотографию!"
   end
 
-  def photo_destroyed(event, photo, email)
+  def photo_destroyed(photo, email)
     @photo = photo
-    @event = event
+    @event = @photo.event
 
-    mail to: email, subject: "Из #{event.title} удалили фотографию!"
+    mail to: email, subject: "Из #{@event.title} удалили фотографию!"
   end
 end
