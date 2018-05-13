@@ -4,7 +4,7 @@ class EventMailer < ApplicationMailer
     @name = subscription.user_name
     @event = subscription.event
 
-    mail to: event.user.email, subject: "Новая подписка на #{@event.title}"
+    mail to: @event.user.email, subject: "Новая подписка на #{@event.title}"
   end
 
   def subscription_destroyed(subscription)
@@ -12,7 +12,7 @@ class EventMailer < ApplicationMailer
     @name = subscription.user_name
     @event = subscription.event
 
-    mail to: event.user.email, subject: "От #{@event.title} отписались"
+    mail to: @event.user.email, subject: "От #{@event.title} отписались"
   end
 
   def comment(comment, email)

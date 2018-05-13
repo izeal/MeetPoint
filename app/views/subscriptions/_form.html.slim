@@ -1,5 +1,4 @@
 = form_for [@event, subscription] do |f|
-  / - require 'pry'; binding.pry
   = render partial: 'partials/errors_viewer', locals: { model: subscription }
 
   - unless user_signed_in?

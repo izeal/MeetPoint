@@ -1,23 +1,23 @@
 module EventNotifier
   def self.execute(model)
-    case model.class
-    when Comment
+    case
+    when model.class == Comment
       if model.destroyed?
-        EventMailer.model_destroyed(model, model.user.email).deliver_now
+        EventMailer.comment_destroyed(model, model.user.email).deliver_now
       else
         emails = participants_emails(model)
         emails.each { |mail| EventMailer.comment(model, mail).deliver_now }
       end
 
-    when Photo
+    when model.class == Photo
       if model.destroyed?
-        EventMailer.model_destroyed(model, model.user.email).deliver_now
+        EventMailer.photo_destroyed(model, model.user.email).deliver_now
       else
         emails = participants_emails(model)
         emails.each { |mail| EventMailer.photo(model, mail).deliver_now }
       end
 
-    when Subscription
+    when model.class == Subscription
       if model.destroyed?
         EventMailer.subscription_destroyed(model).deliver_now
       else
