@@ -1,4 +1,5 @@
 = form_for [@event, subscription] do |f|
+  / - require 'pry'; binding.pry
   = render partial: 'partials/errors_viewer', locals: { model: subscription }
 
   - unless user_signed_in?
@@ -14,4 +15,4 @@
     .actions = f.submit I18n.t('subscriptions.subscription.subscribe'), class: 'btn btn-primary'
 
   - if user_subscribed?(@event)
-     = link_to "Отписаться", event_subscription_path(@event, @subscription.id), method: :delete, data: { confirm: t('subscriptions.subscription.destroy_confirm') }, class: 'btn btn-primary'
+    = link_to "Отписаться", event_subscription_path(@event, @event.subscriptions.find_by(user_id: current_user.id)), method: :delete, data: { confirm: t('subscriptions.subscription.destroy_confirm') }, class: 'btn btn-primary'

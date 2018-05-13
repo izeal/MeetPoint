@@ -29,4 +29,7 @@
         p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
 
       .event-subsription-form
+        / - require 'pry'; binding.pry
         p = render partial: 'subscriptions/form', locals: { subscription: @new_subscription || @event.subscriptions.build }
+
+
