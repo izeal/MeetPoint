@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_can_edit?
   helper_method :user_owner_of?
   helper_method :user_subscribed?
+  helper_method :participants_emails
 
   def config_params_for_edit
     devise_parameter_sanitizer.permit(
@@ -34,5 +35,9 @@ class ApplicationController < ActionController::Base
   def user_subscribed?(event)
     return unless current_user
     event.subscriptions.find_by(user_id: current_user.id)
+  end
+
+  def participants_emails(model)
+    (model.event.subscriptions.preload(:user).map(&:user_email) + [model.event.user.email] - [model.user.try(:email)]).uniq
   end
 end

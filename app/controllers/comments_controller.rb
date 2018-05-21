@@ -8,7 +8,10 @@ class CommentsController < ApplicationController
 
     if @new_comment.save
       redirect_to @event, notice: I18n.t('controllers.comments.created')
-      EventNotifier.execute(@new_comment)
+
+      participants_emails(@new_comment).each do |email|
+        EventMailer.comment_created(@new_comment, email).deliver_now
+      end
     else
       render 'events/show', alert: I18n.t('controllers.comments.error')
     end
@@ -18,7 +21,7 @@ class CommentsController < ApplicationController
     message = { notice: I18n.t('controllers.comments.destroyed')}
     if current_user_can_edit?(@comment)
       @comment.destroy!
-      EventNotifier.execute(@comment)
+      EventMailer.comment_destroyed(@comment).deliver_now
     else
       message = { alert: I18n.t('controllers.comments.error')}
     end

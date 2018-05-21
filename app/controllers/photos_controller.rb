@@ -8,7 +8,10 @@ class PhotosController < ApplicationController
 
     if @new_photo.save
       redirect_to @event, notice: I18n.t('controllers.photos.created')
-      EventNotifier.execute(@new_photo)
+
+      participants_emails(@new_photo).each do |email|
+        EventMailer.photo_created(@new_photo, email).deliver_now
+      end
     else
       render 'events/show', alert: I18n.t('controllers.photos.error')
     end
@@ -18,7 +21,7 @@ class PhotosController < ApplicationController
     message = { notice: I18n.t('controllers.photos.destroyed') }
     if current_user_can_edit?(@photo)
       @photo.destroy!
-      EventNotifier.execute(@photo)
+      EventMailer.photo_destroyed(@photo).deliver_now
     else
       message = { alert: I18n.t('controllers.photos.error') }
     end
