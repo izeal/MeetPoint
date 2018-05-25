@@ -27,12 +27,12 @@
               em
                 = "(#{@minimum_password_length} #{I18n.t('views.password_min_length')})"
             br
-            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: true
+            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: true, type: "password"
 
           fieldset.form-group
             = f.label :password_confirmation
             br
-            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: true
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: true, type: "password"
 
           .actions
             = f.submit I18n.t('views.sign_in'), class: 'btn btn-primary'

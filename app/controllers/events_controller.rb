@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index, :all_list, :past_list]
   before_action :set_event, only: [:show]
   before_action :set_current_user_event, only: [:edit, :update, :destroy]
-
+  before_action :pincode_guard!, only: [:show]
   def index
     @events = Event.paginate(:page => params[:page], :per_page => 12).future
   end
@@ -66,6 +66,24 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :datetime, :address, :description)
+    params.require(:event).permit(:title, :datetime, :address, :description, :pincode)
+  end
+
+  def pincode_guard!
+    return true if @event.pincode.blank?
+    return true if @event.user == current_user
+
+    if current_user
+      if params[:pincode] && @event.pincode_valid?(params[:pincode])
+        cookies.permanent["events_#{@event.id}_pincode"] = params[:pincode]
+      end
+
+      unless @event.pincode_valid?(cookies.permanent["events_#{@event.id}_pincode"])
+        flash.now[:alert] = t('controllers.events.pin_alert') if params[:pincode]
+        render 'pincode_form'
+      end
+    else
+      redirect_to new_user_session_path, notice: t('controllers.events.redirect')
+    end
   end
 end

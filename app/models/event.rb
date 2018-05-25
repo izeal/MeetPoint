@@ -21,8 +21,13 @@ class Event < ApplicationRecord
   validates :datetime, presence: true
   validates :address, presence: true, length: { maximum: 255 }
   validates :user, presence: true
+  validates :pincode, length: 4..10, format: { with: /\A\d+\z/ }, allow_blank: true
 
   def visitors
     (subscribers + [user]).uniq
+  end
+
+  def pincode_valid?(input_pincode)
+    pincode == input_pincode
   end
 end

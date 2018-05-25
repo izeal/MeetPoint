@@ -14,16 +14,16 @@
           fieldset.form-group
             = f.label :password
             i = " (#{I18n.t('views.new_password')})"
-            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: :password
+            = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: :password, type: "password"
 
           fieldset.form-group
             = f.label :password_confirmation
-            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: :password_confirmation, type: "password"
 
           fieldset.form-group
             = f.label :current_password
             i = " (#{I18n.t('views.current_password')})"
-            = f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: :current_password
+            = f.password_field :current_password, autocomplete: "off", class: 'form-control', placeholder: :current_password, type: "password"
 
           .actions
             = f.submit I18n.t('views.save'), class: 'btn btn-primary'

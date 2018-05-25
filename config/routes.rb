@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'past_list', to: 'past_list', as: 'past'
       get 'all_list', to: 'all_list', as: 'all'
     end
+    post :show, on: :member
   end
   resources :users, only: [:show, :edit, :update]
 end
