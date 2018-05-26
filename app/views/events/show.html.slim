@@ -5,8 +5,9 @@
 
   .row
     .col-md-8
-      .event-photos
+      = content_tag 'div', '', id: 'map', data: { address: @event.address }, class: 'event-map'
 
+      .event-photos
         .event-photos-gallery
           = render partial: 'photos/photo', collection: @event.photos.except(@new_photo)
 
@@ -29,7 +30,6 @@
         p = render partial: 'subscriptions/subscription', collection: @event.subscriptions.except(@new_subscription)
 
       .event-subsription-form
-        / - require 'pry'; binding.pry
         p = render partial: 'subscriptions/form', locals: { subscription: @new_subscription || @event.subscriptions.build }
 
 
