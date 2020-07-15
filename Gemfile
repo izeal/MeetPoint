@@ -26,14 +26,13 @@ gem 'rmagick'
 gem 'faker'
 gem 'will_paginate'
 gem 'fog-aws'
+gem 'pg'
 
 group :development, :test do
   gem 'byebug'
-  gem 'sqlite3'
 end
 
 group :production do
-  gem 'pg'
 end
 
 group :development do
